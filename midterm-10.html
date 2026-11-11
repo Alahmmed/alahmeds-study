@@ -33,12 +33,15 @@
 @media print{.site-nav,.hub-footer,.hero-actions,.exam-note,.source-notes,.future-note,.download-label,.coverage{display:none}.hub{padding:0}.hero{display:block}h1{font-size:21px}.intro{font-size:12px}.sheet-grid{display:block;columns:2;column-gap:15px;margin-top:20px}.formula-section{break-inside:avoid;padding:12px;border-radius:0;margin-bottom:12px}.formula-section h2{font-size:14px;margin-bottom:12px}.math{font-size:12px}.formula-meaning{font-size:10px}.formula-row+.formula-row{margin-top:10px}.formula-source{font-size:8px;margin-top:10px;padding-top:7px}}
 
 </style>
+<script defer src="study-progress.js"></script>
+<link rel="stylesheet" href="site.css">
 </head>
-<body>
+<body data-study-module="10" data-study-next="11">
 <nav id="site-navigation" class="site-nav" aria-label="Main navigation">
       <a class="site-wordmark" href="index.html"><span class="site-monogram" aria-hidden="true">A</span><span>Alahmeds<span class="site-wordmark-sub">Study</span></span></a>
       <div class="site-tabs"><a href="index.html" >Modules</a><a href="cheat-sheet.html" >Cheat Sheet</a></div>
     </nav>
+
 
 
 
@@ -232,13 +235,13 @@ function renderQuiz(){
  $('retry-question').addEventListener('click',()=>{delete answers[s.id];save();renderQuiz();updateNav();announce('Question reset. Choose one answer.');});
  $('show-answer').addEventListener('click',()=>{answers[s.id]={choice:q.correct,correct:true,revealed:true};save();renderQuiz();updateNav();announce('Explanation shown. Next is available.');});
 }
-function updateNav(){const s=STEPS[index],last=index===STEPS.length-1;$('back').disabled=index===0;$('next').disabled=!!s.quiz&&!quizState();$('next').textContent=last?'Return to start ↺':'Next →';$('next-hint').textContent=s.quiz&&!quizState()?'Choose an answer or show the explanation.':'';}
+function updateNav(){const s=STEPS[index],last=index===STEPS.length-1;$('back').disabled=index===0;$('next').disabled=!!s.quiz&&!quizState();$('next').textContent=last?'Review lesson ↺':'Next →';$('next').classList.toggle('primary',!last);$('next-hint').textContent=s.quiz&&!quizState()?'Choose an answer or show the explanation.':'';}
 function render(animate=true){
  stopSpeech();cancelAnimationFrame(raf);const s=STEPS[index];
  $('chapter').textContent=s.chapter+' / 7 · '+s.chapterTitle;$('count').textContent='Step '+(index+1)+' of '+STEPS.length;$('step-type').textContent=s.quiz?'A short check':'One idea at a time';$('title').textContent=s.title;$('explanation').textContent=s.body;$('takeaway').textContent=s.takeaway;$('takeaway-wrap').hidden=!s.takeaway;$('step-source').textContent=s.sources;
  $('progress').setAttribute('aria-valuenow',index+1);$('progress').setAttribute('aria-valuemax',STEPS.length);$('progress').setAttribute('aria-valuetext','Step '+(index+1)+' of '+STEPS.length);
  $('progress').innerHTML=Array.from({length:7},(_,j)=>{const nums=STEPS.map((s,i)=>({s,i})).filter(x=>x.s.chapter===j+1),done=nums.filter(x=>x.i<=index).length;return'<div class="progress-segment"><span style="width:'+done/nums.length*100+'%"></span></div>';}).join('');
- renderQuiz();renderDrawing(animate);renderVoicePilot();updateNav();if(!isVoicePilot()){$('listen').disabled=!('speechSynthesis' in window);$('listen').textContent=$('listen').disabled?'Listen unavailable':'Listen';}document.title=s.title+' · Midterm 10 · Alahmeds Study';save();announce(!storageAvailable?'Step '+(index+1)+'. Browser storage is unavailable; keep the file open to keep your place.':'Step '+(index+1)+' · '+s.title+'.');
+ renderQuiz();renderDrawing(animate);renderVoicePilot();updateNav();if(!isVoicePilot()){$('listen').disabled=!('speechSynthesis' in window);$('listen').textContent=$('listen').disabled?'Listen unavailable':'Listen';}document.title=s.title+' · Midterm 10 · Alahmeds Study';$('lesson').dataset.lastStep=String(index===STEPS.length-1);window.StudyProgress?.setStep({module:10,isLast:index===STEPS.length-1});save();announce(!storageAvailable?'Step '+(index+1)+'. Browser storage is unavailable; keep the file open to keep your place.':'Step '+(index+1)+' · '+s.title+'.');
 }
 function go(delta){if(delta>0&&$('next').disabled)return;clearStepPreview();const last=index===STEPS.length-1;if(last&&delta>0){index=0;}else index=Math.max(0,Math.min(STEPS.length-1,index+delta));$('resume').hidden=true;render(true);if(window.innerWidth<=680)window.scrollTo({top:0,behavior:'instant'});}
 const chapters=Array.from({length:7},(_,i)=>({i:STEPS.findIndex(s=>s.chapter===i+1),n:i+1}));
