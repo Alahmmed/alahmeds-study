@@ -6,7 +6,7 @@
   "href": "macroeconomics.html",
   "order": 10,
   "description": "Visual midterm lessons, step-by-step explanations and a growing one-page cheat sheet.",
-  "status": "21 of 28 modules ready",
+  "status": "28 of 28 modules ready",
   "available": true,
   "cta": "Open Macroeconomics \u2192",
   "ready_modules": [
@@ -30,6 +30,13 @@
     18,
     19,
     20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
     28
   ],
   "planned_modules": 28
