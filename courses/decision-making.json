@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "slug": "decision-making",
+  "title": "Decision Making",
+  "icon": "D",
+  "href": "decision-making.html",
+  "order": 20,
+  "description": "A place for the next course. Its lessons and study tools will appear here when we begin.",
+  "status": "Coming next",
+  "available": false,
+  "cta": "View course plan \u2192"
+}
