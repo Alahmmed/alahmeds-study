@@ -4,9 +4,13 @@
   "title": "Decision Making",
   "icon": "D",
   "href": "decision-making.html",
+  "description": "Step-by-step decision lessons, original practice and stored OpenAI narration.",
+  "status": "2 modules ready",
+  "available": true,
+  "cta": "Open Decision Making \u2192",
   "order": 20,
-  "description": "A place for the next course. Its lessons and study tools will appear here when we begin.",
-  "status": "Coming next",
-  "available": false,
-  "cta": "View course plan \u2192"
+  "ready_modules": [
+    1,
+    2
+  ]
 }
