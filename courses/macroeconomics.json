@@ -5,8 +5,8 @@
   "icon": "M",
   "href": "macroeconomics.html",
   "order": 10,
-  "description": "Visual midterm lessons, step-by-step explanations and a growing one-page cheat sheet.",
-  "status": "28 of 28 modules ready",
+  "description": "Visual Macro lessons, Money and Monetary Policy and Fed, and a one-page midterm formula sheet.",
+  "status": "28 midterm lessons + Money & Fed",
   "available": true,
   "cta": "Open Macroeconomics \u2192",
   "ready_modules": [
@@ -39,5 +39,19 @@
     27,
     28
   ],
-  "planned_modules": 28
+  "planned_modules": 28,
+  "additional_modules": [
+    {
+      "id": "money-policy",
+      "title": "Money and Monetary Policy and Fed",
+      "href": "money-and-monetary-policy.html",
+      "available": true,
+      "core_chapters": 6,
+      "optional_chapters": 2,
+      "steps": 118,
+      "checks": 20,
+      "progress_key": "alahmeds-money-policy-v1",
+      "completion_key": "alahmeds-money-policy-core-completed-v1"
+    }
+  ]
 }
